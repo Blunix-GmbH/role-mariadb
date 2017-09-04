@@ -1,0 +1,28 @@
+- name: check the MySQL root password
+  mysql_user:
+    name: root
+    password: ''
+    check_implicit_admin: yes
+    login_user: root
+    login_password: ''
+    state: present
+  ignore_errors: yes
+  register: mariadb_default_pw
+
+- name: set MySQL root password
+  when: mariadb_default_pw|succeeded
+  mysql_user:
+    name: root
+    password: '{{ mariadb_root_password }}'
+    check_implicit_admin: yes
+    login_user: root
+    login_password: ''
+    state: present
+
+- name: deploy /etc/mysql/mariadb.conf.d/50-server.cnf
+  template:
+    src: etc/mysql/mariadb.conf.d/50-server.cnf.j2
+    dest: /etc/mysql/mariadb.conf.d/50-server.cnf
+    owner: root
+    group: root
+  notify: restart mariadb

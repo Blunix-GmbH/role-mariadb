@@ -1,0 +1,4 @@
+mariadb_version: 10.1
+mariadb_package_dependencies:
+  - software-properties-common
+mariadb_service_name: mysqld
