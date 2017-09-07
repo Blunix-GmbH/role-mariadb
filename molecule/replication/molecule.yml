@@ -1,0 +1,56 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+  provider:
+    name: virtualbox
+lint:
+  name: yamllint
+platforms:
+  - name: stretch-master
+    groups:
+      - masters
+    box: bento/debian-9.0
+    interfaces:
+      - network_name: private_network
+        type: static
+        auto_config: False
+        ip: 10.44.0.1/24
+  - name: stretch-slave
+    groups:
+      - slaves
+    box: bento/debian-9.0
+    interfaces:
+      - network_name: private_network
+        type: static
+        auto_config: False
+        ip: 10.44.0.2/24
+  - name: xenial-master
+    groups:
+      - masters
+    box: bento/ubuntu-16.04
+    interfaces:
+      - network_name: private_network
+        type: static
+        auto_config: False
+        ip: 10.45.0.1/24
+  - name: xenial-slave
+    groups:
+      - slaves
+    box: bento/ubuntu-16.04
+    interfaces:
+      - network_name: private_network
+        type: static
+        auto_config: False
+        ip: 10.45.0.2/24
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+scenario:
+  name: replication
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
