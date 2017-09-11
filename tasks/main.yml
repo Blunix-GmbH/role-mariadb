@@ -1,0 +1,6 @@
+- include: mariadb.yml
+  when: mariadb_enabled
+  tags:
+    - rdbms
+    - dbms
+    - mariadb

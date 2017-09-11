@@ -1,0 +1,20 @@
+galaxy_info:
+  author: Brian Wiborg
+  company: Blunix GmbH
+  license: Apache2
+  min_ansible_version: 2.3.2.0
+
+  platforms:
+  - name: Debian
+    versions:
+    - stretch
+  - name: Ubuntu
+    versions:
+    - xenial
+
+  galaxy_tags:
+  - blunix
+  - rdbms
+  - mariadb
+
+dependencies: []

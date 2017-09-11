@@ -1,0 +1,25 @@
+- name: install package dependencies
+  apt:
+    pkg: '{{ pkg_item }}'
+    state: installed
+    update_cache: no
+    install_recommends: no
+  with_items: '{{ mariadb_package_dependencies }}'
+  loop_control:
+    loop_var: pkg_item
+
+- name: add APT repository key
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: F1656F24C74CD1D8
+
+- name: add APT repository
+  apt_repository:
+    repo: deb [arch={{ ansible_architecture }}] http://www.ftp.saix.net/DB/mariadb/repo/{{ mariadb_version }}/{{ ansible_distribution | lower }} {{ ansible_lsb.codename }} main
+    filename: mariadb
+
+- name: install MariaDB package
+  apt:
+    pkg: mariadb-server-{{ mariadb_version }}
+    state: installed
+    update_cache: yes

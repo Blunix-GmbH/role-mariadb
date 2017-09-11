@@ -1,0 +1,4 @@
+ansible==2.3.2.0
+molecule==2.0.0.0rc16
+python-vagrant==0.5.15
+
