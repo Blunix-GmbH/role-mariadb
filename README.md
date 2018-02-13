@@ -1,50 +1,35 @@
-Role MariaDB
-============
+# Role MariaDB
 
 This role installs and configures MariaDB from upstream repositories.
 
-Example play
-------------
+# Example play
 
 ```yaml
 - hosts: all
   become: yes
   vars:
     mariadb_enabled: yes
-    mariadb_root_password: s3cr3t
+    mariadb_root_password: secretpassword
   roles:
     - blunix.role-mariadb
 ```
 
-Testing
--------
+# License
 
-This role uses [Molecule](https://molecule.readthedocs.io/en/latest/) and
-[Vagrant](https://www.vagrantup.com/) for automated testing. Simply use the
-included `Makefile` to prepare and run all tests.
+Apache-2.0
 
-```bash
-make install
-make molecule
-# or simply
-make all
-```
+# Author Information
 
-License
--------
-
-Apache2
-
-Author Information
-------------------
-
-Service and support for orchestrated hosting environments, continuous integration/deployment/delivery and various Linux and open-source technology stacks are available from:
+Service and support for orchestrated hosting environments,
+continuous integration/deployment/delivery and various Linux
+and open-source technology stacks are available from:
 
 ```
-Blunix GmbH - Professional Linux Service
+Blunix GmbH - Consulting for Linux Hosting 24/7
 Glogauer Straße 21
 10999 Berlin - Germany
 
 Web: www.blunix.org
-Email: mailto:service@blunix.org
+Email: service[at]blunix.org
+Phone: (+49) 30 / 12 08 39 90
 ```
