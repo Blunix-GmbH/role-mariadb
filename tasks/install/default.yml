@@ -1,7 +1,7 @@
 - name: install package dependencies
   apt:
     pkg: '{{ pkg_item }}'
-    state: installed
+    state: present
     update_cache: no
     install_recommends: no
   with_items: '{{ mariadb_package_dependencies }}'
@@ -21,5 +21,5 @@
 - name: install MariaDB package
   apt:
     pkg: mariadb-server-{{ mariadb_version }}
-    state: installed
+    state: present
     update_cache: yes
