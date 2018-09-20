@@ -4,6 +4,7 @@
   hosts: all
   vars:
     mariadb_enabled: yes
+    mariadb_version: 10.2
     mariadb_root_password: molecule
     mariadb_bind_address: 0.0.0.0
   roles:

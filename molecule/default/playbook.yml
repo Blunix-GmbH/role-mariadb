@@ -1,5 +1,22 @@
 ---
 - name: Converge
-  hosts: all
+  become: yes
+  hosts: stretch
+  vars:
+    mariadb_enabled: yes
+    mariadb_version: 10.1
+    mariadb_root_password: molecule
+    mariadb_bind_address: 0.0.0.0
+  roles:
+    - role: role-mariadb
+
+- name: Converge
+  become: yes
+  hosts: xenial
+  vars:
+    mariadb_enabled: yes
+    mariadb_version: 10.0
+    mariadb_root_password: molecule
+    mariadb_bind_address: 0.0.0.0
   roles:
     - role: role-mariadb

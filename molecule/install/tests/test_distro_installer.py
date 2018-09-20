@@ -27,4 +27,4 @@ def test_package_install(host):
 
 
 def test_socket(host):
-    assert host.socket("tcp://0.0.0.0:3306/").is_listening
+    assert host.socket("tcp://0.0.0.0:3306").is_listening

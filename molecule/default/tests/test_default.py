@@ -7,4 +7,8 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 def test_hosts_file(host):
-    assert not host.file("/etc/apt/sources.list.d/mariadb.list").exists
+    f = host.file('/etc/hosts')
+
+    assert f.exists
+    assert f.user == 'root'
+    assert f.group == 'root'
