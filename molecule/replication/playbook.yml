@@ -3,7 +3,6 @@
   hosts: stretch-master,xenial-master
   become: True
   vars:
-    mariadb_enabled: yes
     mariadb_root_password: molecule
     mariadb_bind_address: 0.0.0.0
     mariadb_server_id: 10
@@ -42,7 +41,6 @@
   hosts: stretch-slave,xenial-slave
   become: True
   vars:
-    mariadb_enabled: yes
     mariadb_root_password: molecule
     mariadb_server_id: 20
   roles:

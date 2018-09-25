@@ -2,7 +2,7 @@ galaxy_info:
   author: Brian Wiborg
   company: Blunix GmbH
   license: Apache2
-  min_ansible_version: 2.3.2.0
+  min_ansible_version: 2.6.4
 
   platforms:
   - name: Debian

@@ -3,10 +3,22 @@
   become: yes
   hosts: stretch
   vars:
-    mariadb_enabled: yes
     mariadb_version: 10.1
     mariadb_root_password: molecule
     mariadb_bind_address: 0.0.0.0
+    mysql_databases:
+      - name: wordpress
+        state: present
+      - name: wiki
+    mariadb_users:
+      - name: frank
+        state: present
+        host: localhost
+        password: secretpassword
+        priv: 'wordpress.*:ALL,GRANT'
+      - name: james
+        password: secretpassword
+        priv: 'wiki.*:ALL,GRANT'
   roles:
     - role: role-mariadb
 
@@ -14,9 +26,21 @@
   become: yes
   hosts: xenial
   vars:
-    mariadb_enabled: yes
     mariadb_version: 10.0
     mariadb_root_password: molecule
     mariadb_bind_address: 0.0.0.0
+    mysql_databases:
+      - name: wordpress
+        state: present
+      - name: wiki
+    mariadb_users:
+      - name: frank
+        state: present
+        host: localhost
+        password: secretpassword
+        priv: 'wordpress.*:ALL,GRANT'
+      - name: james
+        password: secretpassword
+        priv: 'wiki.*:ALL,GRANT'
   roles:
     - role: role-mariadb
