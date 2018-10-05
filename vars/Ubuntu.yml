@@ -1,3 +1,1 @@
-mariadb_package_dependencies:
-  - software-properties-common
 mariadb_service_name: mysql

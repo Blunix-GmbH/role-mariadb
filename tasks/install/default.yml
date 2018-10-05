@@ -1,12 +1,9 @@
 - name: install package dependencies
   apt:
-    pkg: '{{ pkg_item }}'
+    pkg: '{{ mariadb_package_dependencies }}'
     state: present
     update_cache: no
     install_recommends: no
-  with_items: '{{ mariadb_package_dependencies }}'
-  loop_control:
-    loop_var: pkg_item
 
 - name: add APT repository key
   apt_key:
@@ -20,6 +17,6 @@
 
 - name: install MariaDB package
   apt:
-    pkg: mariadb-server-{{ mariadb_version }}
+    pkg: "mariadb-server-{{ mariadb_version }}"
     state: present
     update_cache: yes

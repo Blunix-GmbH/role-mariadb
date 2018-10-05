@@ -50,7 +50,7 @@
 - name: create mariadb users with grants
   mysql_user:
     name: "{{ mysql_user['name'] }}"
-    state: "{{ mysql_user['host'] | default('present') }}"
+    state: "{{ mysql_user['state'] | default('present') }}"
     host: "{{ mysql_user['host'] | default('localhost') }}"
     password: "{{ mysql_user['password'] }}"
     priv: "{{ mysql_user['priv'] }}"
