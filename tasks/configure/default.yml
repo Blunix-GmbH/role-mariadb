@@ -40,21 +40,21 @@
 
 - name: create mariadb databases
   mysql_db:
-    name: "{{ mysql_database['name'] }}"
-    state: "{{ mysql_database['state'] | default('present') }}"
-  with_items: "{{ mysql_databases }}"
+    name: "{{ mariadb_database['name'] }}"
+    state: "{{ mariadb_database['state'] | default('present') }}"
+  with_items: "{{ mariadb_databases }}"
   loop_control:
-    loop_var: mysql_database
-  when: mysql_databases is defined
+    loop_var: mariadb_database
+  when: mariadb_databases is defined
 
 - name: create mariadb users with grants
   mysql_user:
-    name: "{{ mysql_user['name'] }}"
-    state: "{{ mysql_user['state'] | default('present') }}"
-    host: "{{ mysql_user['host'] | default('localhost') }}"
-    password: "{{ mysql_user['password'] }}"
-    priv: "{{ mysql_user['priv'] }}"
-  when: mysql_users is defined
-  with_items: "{{ mysql_users }}"
+    name: "{{ mariadb_user['name'] }}"
+    state: "{{ mariadb_user['state'] | default('present') }}"
+    host: "{{ mariadb_user['host'] | default('localhost') }}"
+    password: "{{ mariadb_user['password'] }}"
+    priv: "{{ mariadb_user['priv'] }}"
+  when: mariadb_users is defined
+  with_items: "{{ mariadb_users }}"
   loop_control:
-    loop_var: mysql_user
+    loop_var: mariadb_user

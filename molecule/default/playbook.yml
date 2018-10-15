@@ -6,7 +6,7 @@
     mariadb_version: 10.1
     mariadb_root_password: molecule
     mariadb_bind_address: 0.0.0.0
-    mysql_databases:
+    mariadb_databases:
       - name: wordpress
         state: present
       - name: wiki
@@ -29,7 +29,7 @@
     mariadb_version: 10.0
     mariadb_root_password: molecule
     mariadb_bind_address: 0.0.0.0
-    mysql_databases:
+    mariadb_databases:
       - name: wordpress
         state: present
       - name: wiki

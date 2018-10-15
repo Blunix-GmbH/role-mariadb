@@ -15,7 +15,7 @@
   become: yes
   tasks:
     - name: Create replication user
-      mysql_user:
+      mariadb_user:
         name: replication
         password: replication
         host: '%'
