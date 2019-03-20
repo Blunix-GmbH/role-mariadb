@@ -21,3 +21,7 @@ clean:
 	rm -rf molecule/*/.molecule
 	rm -rf molecule/*/tests/__pycache__
 	find . -name \*.pyc -delete
+
+update:
+	pur -r requirements.txt
+	$(MAKE) install

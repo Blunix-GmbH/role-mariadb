@@ -4,15 +4,9 @@ This role installs and configures MariaDB from upstream repositories.
 
 # Example play
 
-```yaml
-- hosts: all
-  become: yes
-  vars:
-    mariadb_enabled: yes
-    mariadb_root_password: secretpassword
-  roles:
-    - blunix.role-mariadb
-```
+For a comprehensive example for a single server setup as well as a replication setup see `molecule/default/playbook.yml` or `molecule/replication/playbook,yml`
+
+Please note that for Ubuntu 16.04 xenial only `mariadb-server-10.0` is available (not higher).
 
 # License
 
