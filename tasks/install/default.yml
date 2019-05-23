@@ -12,7 +12,7 @@
 
 - name: add APT repository
   apt_repository:
-    repo: deb [arch={{ ansible_architecture }}] http://www.ftp.saix.net/DB/mariadb/repo/{{ mariadb_version }}/{{ ansible_distribution | lower }} {{ ansible_lsb.codename }} main
+    repo: deb [arch=amd64] http://www.ftp.saix.net/DB/mariadb/repo/{{ mariadb_version }}/{{ ansible_distribution | lower }} {{ ansible_lsb.codename }} main
     filename: mariadb
 
 - name: install MariaDB package
