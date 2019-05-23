@@ -17,7 +17,4 @@ def test_configuration_template(host):
 def test_service_running(host):
     distro = host.system_info.distribution
 
-    if distro == "debian":
-        assert host.service('mysqld').is_running
-    elif distro == "ubuntu":
-        assert host.service('mysql').is_running
+    assert host.service('mysqld').is_running

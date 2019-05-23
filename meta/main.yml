@@ -8,9 +8,6 @@ galaxy_info:
   - name: Debian
     versions:
     - stretch
-  - name: Ubuntu
-    versions:
-    - xenial
 
   galaxy_tags:
   - blunix

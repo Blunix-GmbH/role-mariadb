@@ -16,11 +16,7 @@ def test_apt_repository(host):
 def test_package_install(host):
     distro = host.system_info.distribution
 
-    if distro == "debian":
-        assert host.package("mariadb-server-10.1").is_installed
-
-    elif distro == "ubuntu":
-        assert host.package("mariadb-server-10.0").is_installed
+    assert host.package("mariadb-server-10.1").is_installed
 
     else:
         raise AssertionError("tests missing for distro")
