@@ -12,11 +12,13 @@
 
 - name: add APT repository
   apt_repository:
-    repo: deb [arch=amd64] http://www.ftp.saix.net/DB/mariadb/repo/{{ mariadb_version }}/{{ ansible_distribution | lower }} {{ ansible_lsb.codename }} main
+    repo: "deb [arch=amd64,i386,ppc64el] http://mirror.mva-n.net/mariadb/repo/{{ mariadb_version }}/{{ ansible_distribution | lower }} {{ ansible_lsb.codename }} main"
     filename: mariadb
 
 - name: install MariaDB package
   apt:
-    pkg: "mariadb-server-{{ mariadb_version }}"
+    pkg:
+      - "mariadb-server-{{ mariadb_version }}"
+      - "mariadb-client-{{ mariadb_version }}"
     state: present
     update_cache: yes
