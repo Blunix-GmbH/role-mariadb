@@ -14,12 +14,7 @@ def test_apt_repository(host):
 
 
 def test_package_install(host):
-    distro = host.system_info.distribution
-
-    assert host.package("mariadb-server-10.1").is_installed
-
-    else:
-        raise AssertionError("tests missing for distro")
+    assert host.package("mariadb-server-10.3").is_installed
 
 
 def test_socket(host):
