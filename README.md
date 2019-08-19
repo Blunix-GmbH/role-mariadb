@@ -4,9 +4,9 @@ This role installs and configures MariaDB from upstream repositories.
 
 # Example play
 
-For a comprehensive example for a single server setup as well as a replication setup see `molecule/default/playbook.yml` or `molecule/replication/playbook,yml`
+Please see `molecule/default/playbook.yml`.
 
-Please note that for Ubuntu 16.04 xenial only `mariadb-server-10.0` is available (not higher).
+For replication please check `role-mariadb-replication-manager`.
 
 # License
 

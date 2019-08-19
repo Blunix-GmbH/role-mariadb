@@ -19,10 +19,10 @@
     login_password: ''
     state: present
 
-- name: deploy /etc/mysql/mariadb.conf.d/50-server.cnf
+- name: deploy /etc/mysql/conf.d/custom.cnf
   template:
-    src: etc/mysql/mariadb.conf.d/50-server.cnf.j2
-    dest: /etc/mysql/mariadb.conf.d/50-server.cnf
+    src: etc/mysql/conf.d/custom.cnf.j2
+    dest: /etc/mysql/conf.d/custom.cnf
     owner: root
     group: root
   notify: restart mariadb

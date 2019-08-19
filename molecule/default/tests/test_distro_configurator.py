@@ -11,10 +11,8 @@ def test_root_password(host):
 
 
 def test_configuration_template(host):
-    assert host.file("/etc/mysql/mariadb.conf.d/50-server.cnf").contains('bind-address = 0.0.0.0')
+    assert host.file("/etc/mysql/conf.d/custom.cnf").contains('bind-address = 0.0.0.0')
 
 
 def test_service_running(host):
-    distro = host.system_info.distribution
-
     assert host.service('mysqld').is_running
