@@ -2,3 +2,4 @@ mariadb_version: 10.1
 mariadb_package_dependencies:
   - software-properties-common
   - python-mysqldb
+mariadb_custom_settings: {}
