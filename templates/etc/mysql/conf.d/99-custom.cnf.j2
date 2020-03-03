@@ -124,6 +124,11 @@ collation-server      = utf8mb4_general_ci
 # Also available for other users if required.
 # See https://mariadb.com/kb/en/unix_socket-authentication-plugin/
 
+# Custom settings
+{% for mariadb_custom_setting in mariadb_custom_settings %}
+{{ mariadb_custom_setting }} = {{ mariadb_custom_settings[mariadb_custom_setting] }}
+{% endfor %}
+
 # this is only for embedded server
 [embedded]
 
