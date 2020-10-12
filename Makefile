@@ -1,9 +1,10 @@
-.PHONY: help install molecule all clean
+.PHONY: help install test molecule all clean
 
 help:
 	@echo "Available targets are:"
 	@echo "- install  - install all dependencies"
 	@echo "- molecule - run molecule tests"
+	@echo "- test     - run all tests"
 	@echo "- clean    - clean up the workspace"
 
 install:

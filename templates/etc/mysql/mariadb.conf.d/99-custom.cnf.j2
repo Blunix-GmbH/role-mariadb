@@ -1,0 +1,13 @@
+# {{ ansible_managed }}
+
+{% for mariadb_conf_custom_settings_section in mariadb_conf_custom_settings %}
+[{{ mariadb_conf_custom_settings_section }}]
+{% for mariadb_conf_custom_setting in mariadb_conf_custom_settings[mariadb_conf_custom_settings_section] %}
+{% if mariadb_conf_custom_settings[mariadb_conf_custom_settings_section][mariadb_conf_custom_setting] %}
+{{ mariadb_conf_custom_setting }} = {{ mariadb_conf_custom_settings[mariadb_conf_custom_settings_section][mariadb_conf_custom_setting] }}
+{% else %}
+{{ mariadb_conf_custom_setting }} = {{ mariadb_conf_custom_settings[mariadb_conf_custom_settings_section][mariadb_conf_custom_setting] }}
+{% endif %}
+{% endfor %}
+
+{% endfor %}

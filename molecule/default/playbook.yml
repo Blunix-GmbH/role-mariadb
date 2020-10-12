@@ -1,17 +1,19 @@
----
 - name: Converge
-  become: yes
-  hosts: stretch
+  become: True
+  hosts: all
   roles:
     - role: role-mariadb
   vars:
+
     mariadb_version: 10.3
     mariadb_root_password: molecule
-    mariadb_bind_address: 0.0.0.0
+    mariadb_conf_bind_address: 127.0.0.1
+
     mariadb_databases:
       - name: wordpress
         state: present
       - name: wiki
+
     mariadb_users:
       - name: frank
         state: present
@@ -21,3 +23,8 @@
       - name: james
         password: secretpassword
         priv: 'wiki.*:ALL,GRANT'
+
+    # Templates /etc/mysql/mariadb.conf.d/99-custom.conf
+    mariadb_conf_custom_settings:
+      mysqld:
+        key_buffer_size: 16M
