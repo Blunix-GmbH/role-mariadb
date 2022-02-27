@@ -31,8 +31,8 @@
   template:
     src: "templates/{{ mariadb_config_file }}.j2"
     dest: "{{ mariadb_config_file }}"
-    owner: root
-    group: root
+    owner: mysql
+    group: mysql
     mode: 0640
   with_items:
     - /etc/mysql/mariadb.conf.d/98-ansible.cnf
