@@ -31,7 +31,7 @@
   template:
     src: "templates/{{ mariadb_config_file }}.j2"
     dest: "{{ mariadb_config_file }}"
-    owner: mysql
+    owner: root
     group: mysql
     mode: 0640
   with_items:
