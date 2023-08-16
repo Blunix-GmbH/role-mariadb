@@ -28,7 +28,3 @@
     mariadb_conf_custom_settings:
       mysqld:
         key_buffer_size: 16M
-
-    #mariadb_user_maria_password: from password store
-    mariadb_authorized_keys:
-      - "{{ humans['p.thurner']['ssh_key'] }}"
