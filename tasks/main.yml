@@ -87,6 +87,18 @@
     priv: "*.*:SELECT"
   when: mariadb_user_maria_password is defined
 
+- name: template /home/maria/.my.cnf
+  copy:
+    dest: /home/maria/.my.cnf
+    owner: maria
+    group: maria
+    mode: 0400
+    content: |
+      [client]
+      user=maria
+      password={{ mariadb_user_maria_password }}
+  when: mariadb_user_maria_password is defined
+
 - name: 'create linux user "maria" for mysql access via ssh'
   user:
     name: maria
