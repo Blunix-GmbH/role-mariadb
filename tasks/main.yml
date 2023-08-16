@@ -75,3 +75,42 @@
   with_items: "{{ mariadb_users }}"
   loop_control:
     loop_var: mariadb_user
+
+
+
+- name: 'create mariadb user "maria" for read-only access'
+  mysql_user:
+    name: maria
+    state: present
+    host: localhost
+    password: "{{ mariadb_user_maria_password }}"
+    priv: "*.*:SELECT"
+  when: mariadb_user_maria_password is defined
+
+- name: 'create linux user "maria" for mysql access via ssh'
+  user:
+    name: maria
+    system: True
+    home: /home/maria
+  when: mariadb_authorized_keys is defined
+
+- name: create /home/maria/.ssh
+  file:
+    state: directory
+    path: /home/maria/.ssh
+    owner: maria
+    group: maria
+    mode: 0700
+  when: mariadb_authorized_keys is defined
+
+- name: template /home/maria/.ssh/authorized_keys
+  copy:
+    dest: /home/maria/.ssh/authorized_keys
+    owner: maria
+    group: maria
+    mode: 0700
+    content: |
+      {% for mariadb_authorized_key in mariadb_authorized_keys %}
+      {{ mariadb_authorized_key }}
+      {% endfor %}
+  when: mariadb_authorized_keys is defined
